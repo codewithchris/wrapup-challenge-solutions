@@ -13,7 +13,7 @@ struct ContentView: View {
     let dataService = DataService()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List(movies) { movie in
                     MovieRow(movie: movie)
