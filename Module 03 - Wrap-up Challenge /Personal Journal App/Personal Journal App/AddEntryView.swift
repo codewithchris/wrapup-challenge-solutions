@@ -13,16 +13,17 @@ import SwiftUI
 struct AddEntryView: View {
     @Binding var currentEntry: String
     @Binding var entries: [String]
-    @Environment(\.presentationMode) var presentationMode
-
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         VStack {
             HStack {
                 Spacer() // This pushes the button to the far right
                 Button(action: {
-                    presentationMode.wrappedValue.dismiss()
+                    dismiss()
                 }) {
                     Image(systemName: "xmark.circle.fill")
+                        .font(.largeTitle)
                         .foregroundColor(.gray)
                         .padding()
                 }
@@ -37,7 +38,7 @@ struct AddEntryView: View {
                     entries.append(currentEntry)
                     currentEntry = ""
                 }
-                presentationMode.wrappedValue.dismiss()  // Dismiss after saving
+                dismiss()  // Dismiss after saving
             }
             .padding()
         }
